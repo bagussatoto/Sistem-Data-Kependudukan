@@ -56,4 +56,3 @@ Siapapun dapat berkontribusi pada proyek ini mulai dari pemrograman, pembuakan b
 - **Berbagi Serupa** - Apabila Anda menggubah, mengubah, atau membuat turunan dari proyek ini, Anda harus menyebarluaskan kontribusi Anda dibawah lisensi yang sama dengan produk ini
 
 
-Bagi Anda yang ingin melakukan komersialisasi pada proyek ini dapat menghubungi Nusabot untuk mendapatkan lisensi ekslusif.
