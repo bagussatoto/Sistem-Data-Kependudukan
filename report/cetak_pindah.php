@@ -19,7 +19,7 @@
 	<center>
 
 		<h2>PEMERINTAH KABUPATEN BANTUL</h2>
-		<h3>KECAMATAN KASIHHAN 
+		<h3>KECAMATAN KASIHAN 
 			<br>DESA TAMANTIRTO</h3>
 		<p>________________________________________________________________________</p>
 
@@ -35,7 +35,7 @@
 
 	<center>
 		<h4>
-			<u>SURAT KETARANGAN PINDAH</u>
+			<u>SURAT KETERANGAN PINDAH</u>
 		</h4>
 		<h4>No Surat :
 			<?php echo $data['id_pend']; ?>/Ket.Pindah/
@@ -43,7 +43,7 @@
 		</h4>
 	</center>
 	<p>Yang bertandatangan dibawah ini Kepala Desa Tamantirto, Kecamatan Kasihan, Kabupaten Bantul, dengan ini menerangkan
-		bahawa :</P>
+		bahwa :</p>
 	<table>
 		<tbody>
 			<tr>
@@ -71,8 +71,8 @@
 			<?php } ?>
 		</tbody>
 	</table>
-	<p>Telah benar-benar Pindah dari Desa Tamantirto, Kecamatan Kasihan Kabupuaten Bantul.</P>
-	<p>Demikian Surat ini dibuat, agar dapat digunakan sebagai mana mestinya.</P>
+	<p>Telah benar-benar Pindah dari Desa Tamantirto, Kecamatan Kasihan, Kabupaten Bantul.</p>
+	<p>Demikian Surat ini dibuat, agar dapat digunakan sebagaimana mestinya.</p>
 	<br>
 	<br>
 	<br>

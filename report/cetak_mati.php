@@ -36,7 +36,7 @@
 
 	<center>
 		<h4>
-			<u>SURAT KETARANGAN KEMATIAN</u>
+			<u>SURAT KETERANGAN KEMATIAN</u>
 		</h4>
 		<h4>No Surat :
 			<?php echo $data['id_mendu']; ?>/Ket.Kematian/
@@ -44,7 +44,7 @@
 		</h4>
 	</center>
 	<p>Yang bertandatangan dibawah ini Kepala Desa Tamantirto, Kecamatan Kasihan, Kabupaten Bantul, dengan ini menerangkan
-		bahawa :</P>
+		bahwa :</p>
 	<table>
 		<tbody>
 			<tr>

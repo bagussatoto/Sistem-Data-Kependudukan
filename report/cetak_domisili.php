@@ -35,15 +35,15 @@
 
 	<center>
 		<h4>
-			<u>SURAT KETARANGAN DOMISILI</u>
+			<u>SURAT KETERANGAN DOMISILI</u>
 		</h4>
 		<h4>No Surat :
 			<?php echo $data['id_pend']; ?>/Ket.Domisili/
 			<?php echo $tanggal; ?>
 		</h4>
 	</center>
-	<p>Yang bertandatangan dibawah ini Kepala Desa Tamntirot, Kecamatan Kasihan, Kabupaten Bantul, dengan ini menerangkan
-		bahawa :</P>
+	<p>Yang bertandatangan dibawah ini Kepala Desa Tamantirto, Kecamatan Kasihan, Kabupaten Bantul, dengan ini menerangkan
+		bahwa :</p>
 	<table>
 		<tbody>
 			<tr>
@@ -71,7 +71,7 @@
 			<?php } ?>
 		</tbody>
 	</table>
-	<p>Adalah benar-benar warga Desa Tamantirto, Kecamatan Kasihan, Kabupuaten Bantul</P>
+	<p>Adalah benar-benar warga Desa Tamantirto, Kecamatan Kasihan, Kabupaten Bantul</p>
 	<p>Demikian Surat ini dibuat, agar dapat digunakan sebagai mana mestinya.</P>
 	<br>
 	<br>

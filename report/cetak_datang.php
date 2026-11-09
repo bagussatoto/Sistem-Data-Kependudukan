@@ -35,7 +35,7 @@
 
 	<center>
 		<h4>
-			<u>SURAT KETARANGAN PENDATANG</u>
+			<u>SURAT KETERANGAN PENDATANG</u>
 		</h4>
 		<h4>No Surat :
 			<?php echo $data['id_datang']; ?>/Ket.Pendatang/
@@ -43,7 +43,7 @@
 		</h4>
 	</center>
 	<p>Yang bertandatangan dibawah ini Kepala Desa Tamantirto Kecamatan Kasihan Kabupaten Bantul, dengan ini menerangkan
-		bahawa :</P>
+		bahwa :</p>
 	<table>
 		<tbody>
 			<tr>
@@ -77,7 +77,7 @@
 			<?php } ?>
 		</tbody>
 	</table>
-	<p>Benar-benar Telah datang dan berencana untuk tinggal di Desa Tamantirto, Kecamatan Kasihan, Kabupuaten Bantul.</P>
+	<p>Benar-benar Telah datang dan berencana untuk tinggal di Desa Tamantirto, Kecamatan Kasihan, Kabupaten Bantul.</p>
 	<p>Demikian Surat ini dibuat, agar dapat digunakan sebagaimana mestinya.</P>
 	<br>
 	<br>

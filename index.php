@@ -231,37 +231,37 @@
 							<ul class="nav nav-treeview">
 
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-pend" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Penduduk</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-kartu" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Kartu Keluarga</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-lahir" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Lahir</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-mendu" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Meninggal</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-datang" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Pendatang</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-pindah" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Pindah</p>
 									</a>
@@ -408,37 +408,37 @@
 							<ul class="nav nav-treeview">
 
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-pend" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Penduduk</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-kartu" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Kartu Keluarga</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-lahir" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Lahir</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-mendu" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Meninggal</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-datang" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Pendatang</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="#" class="nav-link">
+									<a href="?page=data-pindah" class="nav-link">
 										<i class="nav-icon far fa-circle text-warning"></i>
 										<p>Data Pindah</p>
 									</a>

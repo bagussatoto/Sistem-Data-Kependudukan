@@ -33,15 +33,15 @@
 
 	<center>
 		<h4>
-			<u>SURAT KETARANGAN KELAHIRAN</u>
+			<u>SURAT KETERANGAN KELAHIRAN</u>
 		</h4>
 		<h4>No Surat :
 			<?php echo $data['id_lahir']; ?>/Ket.Kelahiran/
 			<?php echo $tanggal; ?>
 		</h4>
 	</center>
-	<p>Yang bertandatangan dibawah ini Kepala Desa Tamantirto, Kecamatan Kkasihan, Kabupaten Bantul, dengan ini menerangkan
-		bahawa :</P>
+	<p>Yang bertandatangan dibawah ini Kepala Desa Tamantirto, Kecamatan Kasihan, Kabupaten Bantul, dengan ini menerangkan
+		bahwa :</p>
 	<table>
 		<tbody>
 			<tr>
@@ -68,8 +68,8 @@
 			<?php } ?>
 		</tbody>
 	</table>
-	<p>Telah benar-benar Lahir di Desa Tamantirto, Kecamatan Kasihan, Kabupuaten Bantul</P>
-	<p>Demikian Surat ini dibuat, agar dapat digunakan sebagaimana mestinya.</P
+	<p>Telah benar-benar Lahir di Desa Tamantirto, Kecamatan Kasihan, Kabupaten Bantul</p>
+	<p>Demikian Surat ini dibuat, agar dapat digunakan sebagaimana mestinya.</p>
 	<br>
 	<br>
 	<br>
