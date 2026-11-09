@@ -21,7 +21,7 @@
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Jenis Kelain</label>
+				<label class="col-sm-2 col-form-label">Jenis Kelamin</label>
 				<div class="col-sm-3">
 					<select name="jekel" id="jekel" class="form-control">
 						<option>- Pilih -</option>
@@ -55,24 +55,28 @@
 
 
 			</div>
-			<div class="card-footer">
-				<input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
-				<a href="?page=data-lahir" title="Kembali" class="btn btn-secondary">Batal</a>
-			</div>
+		</div>
+		<div class="card-footer">
+			<input type="submit" name="Simpan" value="Simpan" class="btn btn-info">
+			<a href="?page=data-lahir" title="Kembali" class="btn btn-secondary">Batal</a>
+		</div>
 	</form>
-	</div>
+</div>
 
 	<?php
 
     if (isset ($_POST['Simpan'])){
-    //mulai proses simpan data
+        $nama   = mysqli_real_escape_string($koneksi, trim($_POST['nama']));
+        $tgl_lh = mysqli_real_escape_string($koneksi, trim($_POST['tgl_lh']));
+        $jekel  = mysqli_real_escape_string($koneksi, trim($_POST['jekel']));
+        $id_kk  = mysqli_real_escape_string($koneksi, trim($_POST['id_kk']));
+
         $sql_simpan = "INSERT INTO tb_lahir (nama, tgl_lh, jekel, id_kk) VALUES (
-            '".$_POST['nama']."',
-			'".$_POST['tgl_lh']."',
-            '".$_POST['jekel']."',
-            '".$_POST['id_kk']."')";
+            '$nama',
+            '$tgl_lh',
+            '$jekel',
+            '$id_kk')";
         $query_simpan = mysqli_query($koneksi, $sql_simpan);
-        mysqli_close($koneksi);
 
     if ($query_simpan) {
       echo "<script>

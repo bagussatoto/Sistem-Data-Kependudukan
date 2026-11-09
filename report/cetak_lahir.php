@@ -1,9 +1,7 @@
 <?php
 	include "../inc/koneksi.php";
 	
-	if (isset ($_POST['Cetak'])){
-	$id = $_POST['lahir'];
-	}
+	$id = isset($_POST['lahir']) ? mysqli_real_escape_string($koneksi, $_POST['lahir']) : '';
 
 	$tanggal = date("m/y");
 	$tgl = date("d/m/y");

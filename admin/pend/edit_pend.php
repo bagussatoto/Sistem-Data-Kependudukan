@@ -1,7 +1,8 @@
 <?php
 
     if(isset($_GET['kode'])){
-        $sql_cek = "SELECT * FROM tb_pdd WHERE id_pend='".$_GET['kode']."'";
+        $kode = mysqli_real_escape_string($koneksi, $_GET['kode']);
+        $sql_cek = "SELECT * FROM tb_pdd WHERE id_pend='$kode'";
         $query_cek = mysqli_query($koneksi, $sql_cek);
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
     }
@@ -138,21 +139,33 @@
 <?php
 
     if (isset ($_POST['Ubah'])){
-    $sql_ubah = "UPDATE tb_pdd SET 
-		nik='".$_POST['nik']."',
-		nama='".$_POST['nama']."',
-		tempat_lh='".$_POST['tempat_lh']."',
-		tgl_lh='".$_POST['tgl_lh']."',
-		jekel='".$_POST['jekel']."',
-		desa='".$_POST['desa']."',
-		rt='".$_POST['rt']."',
-		rw='".$_POST['rw']."',
-		agama='".$_POST['agama']."',
-		kawin='".$_POST['kawin']."',
-		pekerjaan='".$_POST['pekerjaan']."'
-		WHERE id_pend='".$_POST['id_pend']."'";
-    $query_ubah = mysqli_query($koneksi, $sql_ubah);
-    mysqli_close($koneksi);
+        $id_pend   = mysqli_real_escape_string($koneksi, trim($_POST['id_pend']));
+        $nik       = mysqli_real_escape_string($koneksi, trim($_POST['nik']));
+        $nama      = mysqli_real_escape_string($koneksi, trim($_POST['nama']));
+        $tempat_lh = mysqli_real_escape_string($koneksi, trim($_POST['tempat_lh']));
+        $tgl_lh    = mysqli_real_escape_string($koneksi, trim($_POST['tgl_lh']));
+        $jekel     = mysqli_real_escape_string($koneksi, trim($_POST['jekel']));
+        $desa      = mysqli_real_escape_string($koneksi, trim($_POST['desa']));
+        $rt        = mysqli_real_escape_string($koneksi, trim($_POST['rt']));
+        $rw        = mysqli_real_escape_string($koneksi, trim($_POST['rw']));
+        $agama     = mysqli_real_escape_string($koneksi, trim($_POST['agama']));
+        $kawin     = mysqli_real_escape_string($koneksi, trim($_POST['kawin']));
+        $pekerjaan = mysqli_real_escape_string($koneksi, trim($_POST['pekerjaan']));
+
+        $sql_ubah = "UPDATE tb_pdd SET 
+            nik='$nik',
+            nama='$nama',
+            tempat_lh='$tempat_lh',
+            tgl_lh='$tgl_lh',
+            jekel='$jekel',
+            desa='$desa',
+            rt='$rt',
+            rw='$rw',
+            agama='$agama',
+            kawin='$kawin',
+            pekerjaan='$pekerjaan'
+            WHERE id_pend='$id_pend'";
+        $query_ubah = mysqli_query($koneksi, $sql_ubah);
 
     if ($query_ubah) {
         echo "<script>

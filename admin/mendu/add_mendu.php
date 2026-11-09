@@ -55,18 +55,20 @@
 <?php
 
     if (isset ($_POST['Simpan'])){
-    //mulai proses simpan data
+        $id_pdd    = mysqli_real_escape_string($koneksi, trim($_POST['id_pdd']));
+        $tgl_mendu = mysqli_real_escape_string($koneksi, trim($_POST['tgl_mendu']));
+        $sebab     = mysqli_real_escape_string($koneksi, trim($_POST['sebab']));
+
         $sql_simpan = "INSERT INTO tb_mendu (id_pdd, tgl_mendu, sebab) VALUES (
-			'".$_POST['id_pdd']."',
-            '".$_POST['tgl_mendu']."',
-            '".$_POST['sebab']."')";
+            '$id_pdd',
+            '$tgl_mendu',
+            '$sebab')";
 		$query_simpan = mysqli_query($koneksi, $sql_simpan);
 		
 		$sql_ubah = "UPDATE tb_pdd SET 
 			status='Meninggal'
-			WHERE id_pend='".$_POST['id_pdd']."'";
+			WHERE id_pend='$id_pdd'";
 		$query_ubah = mysqli_query($koneksi, $sql_ubah);
-        mysqli_close($koneksi);
 
     if ($query_simpan && $query_ubah) {
       echo "<script>

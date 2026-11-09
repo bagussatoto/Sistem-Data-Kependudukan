@@ -170,7 +170,7 @@ CREATE TABLE `tb_pengguna` (
   `id_pengguna` int(11) NOT NULL,
   `nama_pengguna` varchar(20) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `level` enum('Administrator','Kaur Pemerintah') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

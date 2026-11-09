@@ -1,8 +1,9 @@
 <?php
 
     if(isset($_GET['kode'])){
+        $kode = mysqli_real_escape_string($koneksi, $_GET['kode']);
         $sql_cek = "SELECT d.id_datang, d.nik, d.nama_datang, d.jekel, d.tgl_datang, p.id_pend, p.nama from 
-		tb_datang d inner join tb_pdd p on d.pelapor=p.id_pend WHERE id_datang='".$_GET['kode']."'";
+		tb_datang d inner join tb_pdd p on d.pelapor=p.id_pend WHERE id_datang='$kode'";
         $query_cek = mysqli_query($koneksi, $sql_cek);
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
     }
@@ -68,7 +69,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Pelapor</label>
 				<div class="col-sm-6">
-					<select name="pelapor" id="prlapor" class="form-control select2bs4" required>
+					<select name="pelapor" id="pelapor" class="form-control select2bs4" required>
 						<option selected="">- Pilih -</option>
 						<?php
                         // ambil data dari database
@@ -101,15 +102,21 @@
 <?php
 
     if (isset ($_POST['Ubah'])){
-    $sql_ubah = "UPDATE tb_datang SET 
-		nik='".$_POST['nik']."',
-		nama_datang='".$_POST['nama_datang']."',
-		jekel='".$_POST['jekel']."',
-		tgl_datang='".$_POST['tgl_datang']."',
-		pelapor='".$_POST['pelapor']."'
-		WHERE id_datang='".$_POST['id_datang']."'";
-    $query_ubah = mysqli_query($koneksi, $sql_ubah);
-    mysqli_close($koneksi);
+        $id_datang   = mysqli_real_escape_string($koneksi, trim($_POST['id_datang']));
+        $nik         = mysqli_real_escape_string($koneksi, trim($_POST['nik']));
+        $nama_datang = mysqli_real_escape_string($koneksi, trim($_POST['nama_datang']));
+        $jekel       = mysqli_real_escape_string($koneksi, trim($_POST['jekel']));
+        $tgl_datang  = mysqli_real_escape_string($koneksi, trim($_POST['tgl_datang']));
+        $pelapor     = mysqli_real_escape_string($koneksi, trim($_POST['pelapor']));
+
+        $sql_ubah = "UPDATE tb_datang SET 
+            nik='$nik',
+            nama_datang='$nama_datang',
+            jekel='$jekel',
+            tgl_datang='$tgl_datang',
+            pelapor='$pelapor'
+            WHERE id_datang='$id_datang'";
+        $query_ubah = mysqli_query($koneksi, $sql_ubah);
 
     if ($query_ubah) {
         echo "<script>

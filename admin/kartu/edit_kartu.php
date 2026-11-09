@@ -1,7 +1,8 @@
 <?php
 
     if(isset($_GET['kode'])){
-        $sql_cek = "SELECT * FROM tb_kk WHERE id_kk='".$_GET['kode']."'";
+        $kode = mysqli_real_escape_string($koneksi, $_GET['kode']);
+        $sql_cek = "SELECT * FROM tb_kk WHERE id_kk='$kode'";
         $query_cek = mysqli_query($koneksi, $sql_cek);
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
     }
@@ -97,18 +98,27 @@
 <?php
 
     if (isset ($_POST['Ubah'])){
-    $sql_ubah = "UPDATE tb_kk SET 
-    no_kk='".$_POST['no_kk']."',
-    kepala='".$_POST['kepala']."',
-    desa='".$_POST['desa']."',
-    rt='".$_POST['rt']."',
-    rw='".$_POST['rw']."',
-    kec='".$_POST['kec']."',
-    kab='".$_POST['kab']."',
-    prov='".$_POST['prov']."'
-    WHERE id_kk='".$_POST['id_kk']."'";
-    $query_ubah = mysqli_query($koneksi, $sql_ubah);
-    mysqli_close($koneksi);
+        $id_kk  = mysqli_real_escape_string($koneksi, trim($_POST['id_kk']));
+        $no_kk  = mysqli_real_escape_string($koneksi, trim($_POST['no_kk']));
+        $kepala = mysqli_real_escape_string($koneksi, trim($_POST['kepala']));
+        $desa   = mysqli_real_escape_string($koneksi, trim($_POST['desa']));
+        $rt     = mysqli_real_escape_string($koneksi, trim($_POST['rt']));
+        $rw     = mysqli_real_escape_string($koneksi, trim($_POST['rw']));
+        $kec    = mysqli_real_escape_string($koneksi, trim($_POST['kec']));
+        $kab    = mysqli_real_escape_string($koneksi, trim($_POST['kab']));
+        $prov   = mysqli_real_escape_string($koneksi, trim($_POST['prov']));
+
+        $sql_ubah = "UPDATE tb_kk SET 
+            no_kk='$no_kk',
+            kepala='$kepala',
+            desa='$desa',
+            rt='$rt',
+            rw='$rw',
+            kec='$kec',
+            kab='$kab',
+            prov='$prov'
+            WHERE id_kk='$id_kk'";
+        $query_ubah = mysqli_query($koneksi, $sql_ubah);
 
     if ($query_ubah) {
         echo "<script>

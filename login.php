@@ -10,23 +10,38 @@
   $pesan_login = "";
   if (isset($_POST['btnLogin'])) {  
       // anti inject sql
-      $username = mysqli_real_escape_string($koneksi, $_POST['username']);
-      $password = mysqli_real_escape_string($koneksi, $_POST['password']);
+      $username = mysqli_real_escape_string($koneksi, trim($_POST['username']));
+      $password = $_POST['password'];
 
-      // query login
-      $sql_login = "SELECT * FROM tb_pengguna WHERE BINARY username='$username' AND password='$password'";
+      // query login cek username
+      $sql_login = "SELECT * FROM tb_pengguna WHERE BINARY username='$username'";
       $query_login = mysqli_query($koneksi, $sql_login);
       $data_login = mysqli_fetch_array($query_login, MYSQLI_BOTH);
-      $jumlah_login = mysqli_num_rows($query_login);
 
-      if ($jumlah_login == 1) {
-          $_SESSION["ses_id"] = $data_login["id_pengguna"];
-          $_SESSION["ses_nama"] = $data_login["nama_pengguna"];
-          $_SESSION["ses_username"] = $data_login["username"];
-          $_SESSION["ses_password"] = $data_login["password"];
-          $_SESSION["ses_level"] = $data_login["level"];
+      if ($data_login) {
+          $password_valid = false;
+          // Cek hash modern bcrypt ATAU verifikasi plaintext lama (backward compatibility)
+          if (password_verify($password, $data_login['password'])) {
+              $password_valid = true;
+          } elseif ($password === $data_login['password']) {
+              $password_valid = true;
+              // Migrasi otomatis password lama menjadi hash bcrypt
+              $new_hash = password_hash($password, PASSWORD_DEFAULT);
+              $id_u = $data_login['id_pengguna'];
+              mysqli_query($koneksi, "UPDATE tb_pengguna SET password='$new_hash' WHERE id_pengguna='$id_u'");
+          }
 
-          $pesan_login = "success";
+          if ($password_valid) {
+              $_SESSION["ses_id"] = $data_login["id_pengguna"];
+              $_SESSION["ses_nama"] = $data_login["nama_pengguna"];
+              $_SESSION["ses_username"] = $data_login["username"];
+              $_SESSION["ses_password"] = $data_login["password"];
+              $_SESSION["ses_level"] = $data_login["level"];
+
+              $pesan_login = "success";
+          } else {
+              $pesan_login = "failed";
+          }
       } else {
           $pesan_login = "failed";
       }

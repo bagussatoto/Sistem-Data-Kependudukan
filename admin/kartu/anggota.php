@@ -140,13 +140,15 @@
 <?php
 
     if (isset ($_POST['Simpan'])){
-    //mulai proses simpan data
+        $id_kk    = mysqli_real_escape_string($koneksi, trim($_POST['id_kk']));
+        $id_pend  = mysqli_real_escape_string($koneksi, trim($_POST['id_pend']));
+        $hubungan = mysqli_real_escape_string($koneksi, trim($_POST['hubungan']));
+
         $sql_simpan = "INSERT INTO tb_anggota (id_kk, id_pend, hubungan) VALUES (
-            '".$_POST['id_kk']."',
-            '".$_POST['id_pend']."',
-            '".$_POST['hubungan']."')";
+            '$id_kk',
+            '$id_pend',
+            '$hubungan')";
         $query_simpan = mysqli_query($koneksi, $sql_simpan);
-        mysqli_close($koneksi);
 
     if ($query_simpan) {
       echo "<script>

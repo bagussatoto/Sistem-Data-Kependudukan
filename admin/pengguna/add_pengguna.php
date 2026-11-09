@@ -49,14 +49,18 @@
 <?php
 
     if (isset ($_POST['Simpan'])){
-    //mulai proses simpan data
-        $sql_simpan = "INSERT INTO tb_pengguna (nama_pengguna,username,password,level) VALUES (
-        '".$_POST['nama_pengguna']."',
-        '".$_POST['username']."',
-        '".$_POST['password']."',
-        '".$_POST['level']."')";
+        // Sanitasi input
+        $nama_pengguna = mysqli_real_escape_string($koneksi, trim($_POST['nama_pengguna']));
+        $username      = mysqli_real_escape_string($koneksi, trim($_POST['username']));
+        $password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $level         = mysqli_real_escape_string($koneksi, trim($_POST['level']));
+
+        $sql_simpan = "INSERT INTO tb_pengguna (nama_pengguna, username, password, level) VALUES (
+            '$nama_pengguna',
+            '$username',
+            '$password_hash',
+            '$level')";
         $query_simpan = mysqli_query($koneksi, $sql_simpan);
-        mysqli_close($koneksi);
 
     if ($query_simpan) {
       echo "<script>

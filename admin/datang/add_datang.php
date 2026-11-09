@@ -21,7 +21,7 @@
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Jenis Kelain</label>
+				<label class="col-sm-2 col-form-label">Jenis Kelamin</label>
 				<div class="col-sm-3">
 					<select name="jekel" id="jekel" class="form-control">
 						<option>- Pilih -</option>
@@ -72,15 +72,19 @@
 <?php
 
     if (isset ($_POST['Simpan'])){
-    //mulai proses simpan data
+        $nik         = mysqli_real_escape_string($koneksi, trim($_POST['nik']));
+        $nama_datang = mysqli_real_escape_string($koneksi, trim($_POST['nama_datang']));
+        $jekel       = mysqli_real_escape_string($koneksi, trim($_POST['jekel']));
+        $tgl_datang  = mysqli_real_escape_string($koneksi, trim($_POST['tgl_datang']));
+        $pelapor     = mysqli_real_escape_string($koneksi, trim($_POST['pelapor']));
+
         $sql_simpan = "INSERT INTO tb_datang (nik, nama_datang, jekel, tgl_datang, pelapor) VALUES (
-			'".$_POST['nik']."',
-			'".$_POST['nama_datang']."',
-			'".$_POST['jekel']."',
-			'".$_POST['tgl_datang']."',
-            '".$_POST['pelapor']."')";
+            '$nik',
+            '$nama_datang',
+            '$jekel',
+            '$tgl_datang',
+            '$pelapor')";
 		$query_simpan = mysqli_query($koneksi, $sql_simpan);
-        mysqli_close($koneksi);
 
     if ($query_simpan) {
       echo "<script>

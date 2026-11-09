@@ -31,7 +31,7 @@
 			</div>
 
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Jenis Kelain</label>
+				<label class="col-sm-2 col-form-label">Jenis Kelamin</label>
 				<div class="col-sm-3">
 					<select name="jekel" id="jekel" class="form-control">
 						<option>- Pilih -</option>
@@ -96,22 +96,32 @@
 <?php
 
     if (isset ($_POST['Simpan'])){
-    //mulai proses simpan data
+        $nik       = mysqli_real_escape_string($koneksi, trim($_POST['nik']));
+        $nama      = mysqli_real_escape_string($koneksi, trim($_POST['nama']));
+        $tempat_lh = mysqli_real_escape_string($koneksi, trim($_POST['tempat_lh']));
+        $tgl_lh    = mysqli_real_escape_string($koneksi, trim($_POST['tgl_lh']));
+        $jekel     = mysqli_real_escape_string($koneksi, trim($_POST['jekel']));
+        $desa      = mysqli_real_escape_string($koneksi, trim($_POST['desa']));
+        $rt        = mysqli_real_escape_string($koneksi, trim($_POST['rt']));
+        $rw        = mysqli_real_escape_string($koneksi, trim($_POST['rw']));
+        $agama     = mysqli_real_escape_string($koneksi, trim($_POST['agama']));
+        $kawin     = mysqli_real_escape_string($koneksi, trim($_POST['kawin']));
+        $pekerjaan = mysqli_real_escape_string($koneksi, trim($_POST['pekerjaan']));
+
         $sql_simpan = "INSERT INTO tb_pdd (nik, nama, tempat_lh, tgl_lh, jekel, desa, rt, rw, agama, kawin, pekerjaan, status) VALUES (
-            '".$_POST['nik']."',
-            '".$_POST['nama']."',
-			'".$_POST['tempat_lh']."',
-			'".$_POST['tgl_lh']."',
-            '".$_POST['jekel']."',
-            '".$_POST['desa']."',
-			'".$_POST['rt']."',
-			'".$_POST['rw']."',
-			'".$_POST['agama']."',
-			'".$_POST['kawin']."',
-			'".$_POST['pekerjaan']."',
+            '$nik',
+            '$nama',
+            '$tempat_lh',
+            '$tgl_lh',
+            '$jekel',
+            '$desa',
+            '$rt',
+            '$rw',
+            '$agama',
+            '$kawin',
+            '$pekerjaan',
             'Ada')";
         $query_simpan = mysqli_query($koneksi, $sql_simpan);
-        mysqli_close($koneksi);
 
     if ($query_simpan) {
       echo "<script>

@@ -1,8 +1,9 @@
 <?php
 
     if(isset($_GET['kode'])){
+        $kode = mysqli_real_escape_string($koneksi, $_GET['kode']);
         $sql_cek = "SELECT p.nama, d.id_pindah, d.tgl_pindah, d.alasan FROM 
-		tb_pindah d join tb_pdd p on d.id_pdd=p.id_pend WHERE id_pindah='".$_GET['kode']."'";
+		tb_pindah d join tb_pdd p on d.id_pdd=p.id_pend WHERE id_pindah='$kode'";
         $query_cek = mysqli_query($koneksi, $sql_cek);
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
     }
@@ -59,12 +60,15 @@
 <?php
 
     if (isset ($_POST['Ubah'])){
-    $sql_ubah = "UPDATE tb_pindah SET 
-		tgl_pindah='".$_POST['tgl_pindah']."',
-		alasan='".$_POST['alasan']."'
-		WHERE id_pindah='".$_POST['id_pindah']."'";
-    $query_ubah = mysqli_query($koneksi, $sql_ubah);
-    mysqli_close($koneksi);
+        $id_pindah  = mysqli_real_escape_string($koneksi, trim($_POST['id_pindah']));
+        $tgl_pindah = mysqli_real_escape_string($koneksi, trim($_POST['tgl_pindah']));
+        $alasan     = mysqli_real_escape_string($koneksi, trim($_POST['alasan']));
+
+        $sql_ubah = "UPDATE tb_pindah SET 
+            tgl_pindah='$tgl_pindah',
+            alasan='$alasan'
+            WHERE id_pindah='$id_pindah'";
+        $query_ubah = mysqli_query($koneksi, $sql_ubah);
 
     if ($query_ubah) {
         echo "<script>

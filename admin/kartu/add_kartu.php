@@ -69,18 +69,25 @@
 <?php
 
     if (isset ($_POST['Simpan'])){
-    //mulai proses simpan data
+        $no_kk  = mysqli_real_escape_string($koneksi, trim($_POST['no_kk']));
+        $kepala = mysqli_real_escape_string($koneksi, trim($_POST['kepala']));
+        $desa   = mysqli_real_escape_string($koneksi, trim($_POST['desa']));
+        $rt     = mysqli_real_escape_string($koneksi, trim($_POST['rt']));
+        $rw     = mysqli_real_escape_string($koneksi, trim($_POST['rw']));
+        $kec    = mysqli_real_escape_string($koneksi, trim($_POST['kec']));
+        $kab    = mysqli_real_escape_string($koneksi, trim($_POST['kab']));
+        $prov   = mysqli_real_escape_string($koneksi, trim($_POST['prov']));
+
         $sql_simpan = "INSERT INTO tb_kk (no_kk, kepala, desa, rt, rw, kec, kab, prov) VALUES (
-            '".$_POST['no_kk']."',
-            '".$_POST['kepala']."',
-            '".$_POST['desa']."',
-            '".$_POST['rt']."',
-            '".$_POST['rw']."',
-            '".$_POST['kec']."',
-            '".$_POST['kab']."',
-            '".$_POST['prov']."')";
+            '$no_kk',
+            '$kepala',
+            '$desa',
+            '$rt',
+            '$rw',
+            '$kec',
+            '$kab',
+            '$prov')";
         $query_simpan = mysqli_query($koneksi, $sql_simpan);
-        mysqli_close($koneksi);
 
     if ($query_simpan) {
       echo "<script>

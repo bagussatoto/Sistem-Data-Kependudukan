@@ -1,6 +1,7 @@
 <?php
 if(isset($_GET['kode'])){
-            $sql_hapus = "DELETE FROM tb_pengguna WHERE id_pengguna='".$_GET['kode']."'";
+            $kode = mysqli_real_escape_string($koneksi, $_GET['kode']);
+            $sql_hapus = "DELETE FROM tb_pengguna WHERE id_pengguna='$kode'";
             $query_hapus = mysqli_query($koneksi, $sql_hapus);
 
             if ($query_hapus) {

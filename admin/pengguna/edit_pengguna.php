@@ -1,7 +1,8 @@
 <?php
 
     if(isset($_GET['kode'])){
-        $sql_cek = "SELECT * FROM tb_pengguna WHERE id_pengguna='".$_GET['kode']."'";
+        $kode = mysqli_real_escape_string($koneksi, $_GET['kode']);
+        $sql_cek = "SELECT * FROM tb_pengguna WHERE id_pengguna='$kode'";
         $query_cek = mysqli_query($koneksi, $sql_cek);
         $data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
     }
@@ -73,14 +74,26 @@
 <?php
 
     if (isset ($_POST['Ubah'])){
-    $sql_ubah = "UPDATE tb_pengguna SET
-        nama_pengguna='".$_POST['nama_pengguna']."',
-        username='".$_POST['username']."',
-        password='".$_POST['password']."',
-        level='".$_POST['level']."'
-        WHERE id_pengguna='".$_POST['id_pengguna']."'";
-    $query_ubah = mysqli_query($koneksi, $sql_ubah);
-    mysqli_close($koneksi);
+        $id_pengguna   = mysqli_real_escape_string($koneksi, trim($_POST['id_pengguna']));
+        $nama_pengguna = mysqli_real_escape_string($koneksi, trim($_POST['nama_pengguna']));
+        $username      = mysqli_real_escape_string($koneksi, trim($_POST['username']));
+        $level         = mysqli_real_escape_string($koneksi, trim($_POST['level']));
+
+        // Cek jika password diubah
+        $pass_input = $_POST['password'];
+        if ($pass_input === $data_cek['password']) {
+            $password = mysqli_real_escape_string($koneksi, $data_cek['password']);
+        } else {
+            $password = mysqli_real_escape_string($koneksi, password_hash($pass_input, PASSWORD_DEFAULT));
+        }
+
+        $sql_ubah = "UPDATE tb_pengguna SET
+            nama_pengguna='$nama_pengguna',
+            username='$username',
+            password='$password',
+            level='$level'
+            WHERE id_pengguna='$id_pengguna'";
+        $query_ubah = mysqli_query($koneksi, $sql_ubah);
 
     if ($query_ubah) {
         echo "<script>
