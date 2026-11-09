@@ -150,3 +150,4 @@ Seluruh parameter input form di-escape menggunakan `mysqli_real_escape_string()`
 * `e0b1f3e` - *Aktifkan link Kelola Laporan pada sidebar dan perbaiki typo redaksi pada surat cetak*
 * `bacf707` - *Implementasi hashing password bcrypt dengan auto-upgrade dan sanitasi query SQL di seluruh modul*
 * `511272f` - *Fix logic hapus data kematian & pindah, perbaiki navigasi dashboard, session login, dan bug tampilan*
+
