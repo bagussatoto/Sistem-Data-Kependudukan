@@ -1,6 +1,36 @@
 <?php
+  session_start();
   include "inc/koneksi.php";
-   
+
+  if (isset($_SESSION["ses_username"]) && !empty($_SESSION["ses_username"])) {
+      header("location: index.php");
+      exit();
+  }
+
+  $pesan_login = "";
+  if (isset($_POST['btnLogin'])) {  
+      // anti inject sql
+      $username = mysqli_real_escape_string($koneksi, $_POST['username']);
+      $password = mysqli_real_escape_string($koneksi, $_POST['password']);
+
+      // query login
+      $sql_login = "SELECT * FROM tb_pengguna WHERE BINARY username='$username' AND password='$password'";
+      $query_login = mysqli_query($koneksi, $sql_login);
+      $data_login = mysqli_fetch_array($query_login, MYSQLI_BOTH);
+      $jumlah_login = mysqli_num_rows($query_login);
+
+      if ($jumlah_login == 1) {
+          $_SESSION["ses_id"] = $data_login["id_pengguna"];
+          $_SESSION["ses_nama"] = $data_login["nama_pengguna"];
+          $_SESSION["ses_username"] = $data_login["username"];
+          $_SESSION["ses_password"] = $data_login["password"];
+          $_SESSION["ses_level"] = $data_login["level"];
+
+          $pesan_login = "success";
+      } else {
+          $pesan_login = "failed";
+      }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +74,6 @@
 					<br>
 				</center>
 
-
 				<form action="" method="post">
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" name="username" placeholder="Username" required>
@@ -68,62 +97,39 @@
 								<b>Login</b>
 							</button>
 						</div>
+					</div>
 				</form>
 
-				</div>
 			</div>
 		</div>
-		<!-- /.login-box -->
+	</div>
+	<!-- /.login-box -->
 
-		<!-- jQuery -->
-		<script src="plugins/jquery/jquery.min.js"></script>
-		<!-- Bootstrap 4 -->
-		<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<!-- AdminLTE App -->
-		<script src="dist/js/adminlte.min.js"></script>
-		<!-- Alert -->
-		<script src="plugins/alert.js"></script>
+	<!-- jQuery -->
+	<script src="plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="dist/js/adminlte.min.js"></script>
+	<!-- Alert -->
+	<script src="plugins/alert.js"></script>
+
+<?php if ($pesan_login == "success") { ?>
+	<script>
+		Swal.fire({title: 'Login Berhasil', text: '', icon: 'success', confirmButtonText: 'OK'
+		}).then((result) => {
+			if (result.value) { window.location = 'index.php'; }
+		});
+	</script>
+<?php } elseif ($pesan_login == "failed") { ?>
+	<script>
+		Swal.fire({title: 'Login Gagal', text: '', icon: 'error', confirmButtonText: 'OK'
+		}).then((result) => {
+			if (result.value) { window.location = 'login.php'; }
+		});
+	</script>
+<?php } ?>
 
 </body>
 
 </html>
-
-<?php
-
-
-
-
-
-if (isset($_POST['btnLogin'])) {  
-	//anti inject sql
-	$username=mysqli_real_escape_string($koneksi,$_POST['username']);
-	$password=mysqli_real_escape_string($koneksi,$_POST['password']);
-
-	//query login
-	$sql_login = "SELECT * FROM tb_pengguna WHERE BINARY username='$username' AND password='$password'";
-	$query_login = mysqli_query($koneksi, $sql_login);
-	$data_login = mysqli_fetch_array($query_login,MYSQLI_BOTH);
-	$jumlah_login = mysqli_num_rows($query_login);
-
-
-	if ($jumlah_login ==1 ){
-		session_start();
-		$_SESSION["ses_id"]=$data_login["id_pengguna"];
-		$_SESSION["ses_nama"]=$data_login["nama_pengguna"];
-		$_SESSION["ses_username"]=$data_login["username"];
-		$_SESSION["ses_password"]=$data_login["password"];
-		$_SESSION["ses_level"]=$data_login["level"];
-	
-		echo "<script>
-			Swal.fire({title: 'Login Berhasil',text: '',icon: 'success',confirmButtonText: 'OK'
-			}).then((result) => {if (result.value)
-				{window.location = 'index.php';}
-			})</script>";
-		}else{
-		echo "<script>
-			Swal.fire({title: 'Login Gagal',text: '',icon: 'error',confirmButtonText: 'OK'
-			}).then((result) => {if (result.value)
-				{window.location = 'login.php';}
-			})</script>";
-		}
-		}

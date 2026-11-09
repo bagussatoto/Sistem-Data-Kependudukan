@@ -18,9 +18,8 @@ Pada langkah ini akan dijelaskan instalasi sistem menggunakan XAMPP:
 2. Buat folder baru di dalam folder htdocs dari XAMPP.
 3. Ekstrak file zip yang sudah diunduh tadi ke dalam folder yang baru dibuat.
 4. Buat database baru, bisa gunakan **PHPMyAdmin** yang sudah disediakan XAMPP.
-5. Impor database kedalam database yang baru saja dibuat, file impor berada di **/db_lowker**
-6. Ubah pengaturan koneksi basis data pada file **/db_lowker** , sesuaikan dengan pengaturan XAMPP Anda (pengaturan default yang dibuat oleh Bagus Satoto adalah pengaturan default untuk XAMPP, Anda hanya perlu mengubah `$databaseName`menjadi nama basis data yang sudah Anda buat).
-7. Ubah juga pengaturan koneksi basis data untuk melakukan absensi dari mesin pada file **/db_lowker** .
+5. Impor database kedalam database yang baru saja dibuat, file impor berada di **/Database/data_penduduk.sql**
+6. Ubah pengaturan koneksi basis data pada file **/inc/koneksi.php**, sesuaikan dengan pengaturan database Anda (pengaturan default adalah database `data_penduduk`).
 
 
 

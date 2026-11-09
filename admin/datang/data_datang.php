@@ -59,7 +59,7 @@
 							<a href="?page=del-datang&kode=<?php echo $data['id_datang']; ?>" onclick="return confirm('Apakah anda yakin hapus data ini ?')"
 							 title="Hapus" class="btn btn-danger btn-sm">
 								<i class="fa fa-trash"></i>
-								</>
+							</a>
 						</td>
 					</tr>
 

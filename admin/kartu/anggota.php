@@ -1,11 +1,12 @@
 <?php
-
+    $karkel = 0;
     if(isset($_GET['kode'])){
-        $sql_cek = "SELECT * FROM tb_kk WHERE id_kk='".$_GET['kode']."'";
+        $kode = mysqli_real_escape_string($koneksi, $_GET['kode']);
+        $sql_cek = "SELECT * FROM tb_kk WHERE id_kk='$kode'";
         $query_cek = mysqli_query($koneksi, $sql_cek);
 		$data_cek = mysqli_fetch_array($query_cek,MYSQLI_BOTH);
 		
-		$karkel=$data_cek['id_kk'];
+		$karkel = isset($data_cek['id_kk']) ? (int)$data_cek['id_kk'] : 0;
     }
 ?>
 
@@ -96,7 +97,7 @@
 							<?php
               $no = 1;
 			  $sql = $koneksi->query("SELECT p.nik, p.nama, p.jekel, a.hubungan, a.id_anggota 
-			  from tb_pdd p inner join tb_anggota a on p.id_pend=a.id_pend where status='Ada' and id_kk=$karkel");
+			  from tb_pdd p inner join tb_anggota a on p.id_pend=a.id_pend where status='Ada' and id_kk='$karkel'");
               while ($data= $sql->fetch_assoc()) {
             ?>
 

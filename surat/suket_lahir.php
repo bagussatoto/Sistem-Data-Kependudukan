@@ -3,14 +3,14 @@
 		<h3 class="card-title">
 			<i class="fa fa-file"></i> Su-Ket Kelahiran</h3>
 	</div>
-	<form action="./report/cetak_lahir.php" method="post" enctype="multipart/form-data">
+	<form action="./report/cetak_lahir.php" method="post" target="_blank">
 		<div class="card-body">
 
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Kelahiran</label>
 				<div class="col-sm-6">
 					<select name="lahir" id="lahir" class="form-control select2bs4" required>
-						<option selected="selected">- Pilih Data -</option>
+						<option value="" selected="selected">- Pilih Data -</option>
 						<?php
 				// ambil data dari database
 				$query = "select * from tb_lahir";
