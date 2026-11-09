@@ -142,12 +142,3 @@ Seluruh parameter input form di-escape menggunakan `mysqli_real_escape_string()`
 * **`README.md`:** Memperbaiki petunjuk instalasi basis data yang sebelumnya salah menyebut `/db_lowker` menjadi `/Database/data_penduduk.sql` dan database `data_penduduk`.
 * **`.gitignore`:** Menambahkan file pengabaian sampah sistem operasi, editor (VSCode/PHPStorm), dan log file.
 
----
-
-## 📌 Riwayat Commit GitHub
-
-* `5801b63` - *Tambah file .gitignore standar proyek PHP*
-* `e0b1f3e` - *Aktifkan link Kelola Laporan pada sidebar dan perbaiki typo redaksi pada surat cetak*
-* `bacf707` - *Implementasi hashing password bcrypt dengan auto-upgrade dan sanitasi query SQL di seluruh modul*
-* `511272f` - *Fix logic hapus data kematian & pindah, perbaiki navigasi dashboard, session login, dan bug tampilan*
-
